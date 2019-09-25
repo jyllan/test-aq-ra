@@ -2,10 +2,9 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
-
 function Header() {
     return (
-        <header class="header">
+        <header className="header">
             <Navbar expand="lg">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
