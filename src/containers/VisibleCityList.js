@@ -2,8 +2,10 @@ import { connect } from 'react-redux'
 import { toggleTodo } from '../actions'
 import CityList from '../components/CityList'
 import { VisibilityFilters } from '../actions'
+import PropTypes from 'prop-types'
 
 const getVisibleCities = (cities, filter) => {
+
   switch (filter) {
     case VisibilityFilters.SHOW_ALL:
       return cities
@@ -16,13 +18,20 @@ const getVisibleCities = (cities, filter) => {
   }
 }
 
-const mapStateToProps = state => ({
-  cities: getVisibleCities(state.cities, state.visibilityFilter)
-})
+const mapStateToProps = (state, props) => {
+    const {visibilityFilter = state.visibilityFilter} = props ;
+    return {
+      cities: getVisibleCities(state.cities, visibilityFilter)
+    }
+}
 
 const mapDispatchToProps = dispatch => ({
   toggleTodo: id => dispatch(toggleTodo(id))
 })
+
+getVisibleCities.propTypes = {
+  filter: PropTypes.string,
+}
 
 export default connect(
   mapStateToProps,

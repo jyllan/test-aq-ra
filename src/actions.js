@@ -1,8 +1,8 @@
 let nextCityId = 0
-export const addCity = text => ({
+export const addCity = openweatherCityId => ({
   type: 'ADD_CITY',
   id: nextCityId++,
-  text
+  openweatherCityId
 })
 
 export const setVisibilityFilter = filter => ({

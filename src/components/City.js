@@ -1,21 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const City = ({ onClick, completed, text }) => (
+const City = ({ onClick, completed, openweatherCityId }) => (
   <li
     onClick={onClick}
     style={{
       textDecoration: completed ? 'line-through' : 'none'
     }}
   >
-    {text}
+    {openweatherCityId}
   </li>
 )
 
 City.propTypes = {
   onClick: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
+  openweatherCityId: PropTypes.string.isRequired
 }
 
 export default City

@@ -1,12 +1,12 @@
 const cities = (state = [], action) => {
   switch (action.type) {
     case 'ADD_CITY':
-      if(!state.find(city => city.text === action.text)) {
+      if(!state.find(city => city.openweatherCityId === action.openweatherCityId)) {
         return [
           ...state,
           {
             id: action.id,
-            text: action.text,
+            openweatherCityId: action.openweatherCityId,
             completed: false
           }
         ]
