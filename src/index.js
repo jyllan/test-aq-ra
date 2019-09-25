@@ -2,12 +2,12 @@ import React from 'react';
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import todoApp from './reducers'
+import cityApp from './reducers'
 import App from './App'
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(todoApp)
+const store = createStore(cityApp)
 
 render(
   <Provider store={store}>

@@ -1,7 +1,7 @@
-let nextTodoId = 0
-export const addTodo = text => ({
-  type: 'ADD_TODO',
-  id: nextTodoId++,
+let nextCityId = 0
+export const addCity = text => ({
+  type: 'ADD_CITY',
+  id: nextCityId++,
   text
 })
 
@@ -11,7 +11,7 @@ export const setVisibilityFilter = filter => ({
 })
 
 export const toggleTodo = id => ({
-  type: 'TOGGLE_TODO',
+  type: 'TOGGLE_CITY',
   id
 })
 
