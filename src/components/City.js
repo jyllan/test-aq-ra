@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const City = ({ onClick, completed, openweatherCityId }) => (
+const City = ({ onClick, active, openweatherCityId }) => (
   <li
     onClick={onClick}
     style={{
-      textDecoration: completed ? 'line-through' : 'none'
+      textDecoration: active ? 'line-through' : 'none'
     }}
   >
     {openweatherCityId}
@@ -14,7 +14,7 @@ const City = ({ onClick, completed, openweatherCityId }) => (
 
 City.propTypes = {
   onClick: PropTypes.func.isRequired,
-  completed: PropTypes.bool.isRequired,
+  active: PropTypes.bool.isRequired,
   openweatherCityId: PropTypes.string.isRequired
 }
 

@@ -17,7 +17,7 @@ const CityList = ({ cities, toggleTodo }) => (
 CityList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    completed: PropTypes.bool.isRequired,
+    active: PropTypes.bool.isRequired,
     openweatherCityId: PropTypes.string.isRequired
   }).isRequired).isRequired,
   toggleTodo: PropTypes.func.isRequired

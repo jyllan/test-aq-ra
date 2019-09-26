@@ -1,7 +1,7 @@
-let nextCityId = 0
+// let nextCityId = 0
 export const addCity = openweatherCityId => ({
   type: 'ADD_CITY',
-  id: nextCityId++,
+  // id: nextCityId++,
   openweatherCityId
 })
 

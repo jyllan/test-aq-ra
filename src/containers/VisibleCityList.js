@@ -10,9 +10,9 @@ const getVisibleCities = (cities, filter) => {
     case VisibilityFilters.SHOW_ALL:
       return cities
     case VisibilityFilters.SHOW_COMPLETED:
-      return cities.filter(t => t.completed)
+      return cities.filter(t => t.active)
     case VisibilityFilters.SHOW_ACTIVE:
-      return cities.filter(t => !t.completed)
+      return cities.filter(t => !t.active)
     default:
       throw new Error('Unknown filter: ' + filter)
   }
