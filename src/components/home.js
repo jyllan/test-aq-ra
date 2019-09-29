@@ -9,6 +9,7 @@ class Home extends React.Component {
             <h2>Home</h2>
             <VisibleCityList
                 visibilityFilter={VisibilityFilters.SHOW_ACTIVE}
+                showDetails={true}
             />
           </div>
         )

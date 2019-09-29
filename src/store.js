@@ -24,7 +24,7 @@ const getStore = () => {
         saveState({
             ...store.getState(),
         });
-    }, 1000));
+    }, 100));
 
     return store;
 }

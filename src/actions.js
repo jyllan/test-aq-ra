@@ -1,7 +1,5 @@
-// let nextCityId = 0
 export const addCity = openweatherCityId => ({
   type: 'ADD_CITY',
-  // id: nextCityId++,
   openweatherCityId
 })
 
@@ -17,6 +15,6 @@ export const toggleTodo = id => ({
 
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
+  SHOW_DISABLED: 'SHOW_DISABLED',
   SHOW_ACTIVE: 'SHOW_ACTIVE'
 }

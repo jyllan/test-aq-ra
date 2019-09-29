@@ -5,6 +5,7 @@ import { addCity } from '../actions'
 const AddCity = ({ dispatch }) => {
   let input
 
+  // Show a simple form with an input and a submit button
   return (
     <div>
       <form onSubmit={e => {
@@ -12,6 +13,7 @@ const AddCity = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
+        // On submit, call the addCity action
         dispatch(addCity(input.value))
         input.value = ''
       }}>

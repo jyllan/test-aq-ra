@@ -11,7 +11,7 @@ const Footer = () => (
     <FilterLink filter={VisibilityFilters.SHOW_ACTIVE}>
       Active
     </FilterLink>
-    <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>
+    <FilterLink filter={VisibilityFilters.SHOW_DISABLED}>
       Completed
     </FilterLink>
   </div>

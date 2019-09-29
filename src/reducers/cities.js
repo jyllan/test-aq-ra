@@ -6,7 +6,7 @@ const cities = (state = [], action) => {
         return [
           ...state,
           {
-            id: Object.keys(state).length,
+            id: Object.keys(state).length, // Use the next ID available. IDs are unique and consecutive
             openweatherCityId: action.openweatherCityId,
             active: false
           }
@@ -14,7 +14,7 @@ const cities = (state = [], action) => {
       }
       return state
     case 'TOGGLE_CITY':
-      // Toggle the
+      // Toggle the selected city's active attribute
       return state.map(city =>
         (city.id === action.id)
           ? {...city, active: !city.active}
