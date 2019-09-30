@@ -6,7 +6,7 @@ const cities = (state = [], action) => {
         return [
           ...state,
           {
-            id: Object.keys(state).length, // Use the next ID available. IDs are unique and consecutive
+            id: state[state.length - 1].id + 1, // Use the next ID available. IDs are unique and ascending
             openweatherCityId: action.openweatherCityId,
             active: false
           }

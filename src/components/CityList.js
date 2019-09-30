@@ -23,7 +23,7 @@ CityList.propTypes = {
     openweatherCityId: PropTypes.string.isRequired
   }).isRequired).isRequired,
   toggleActive: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired,
+  removeCity: PropTypes.func.isRequired,
   showDetails: PropTypes.bool
 }
 
