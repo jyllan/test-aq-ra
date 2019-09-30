@@ -118,7 +118,11 @@ class City extends React.Component {
                 >
                     &#10004;
                 </span>
-                {this.props.openweatherCityId}
+                <span
+                    className="city__openweather-id"
+                >
+                    {this.props.openweatherCityId}
+                </span>
                 <span
                     className="city__remove"
                     onClick={this.props.onRemove}
