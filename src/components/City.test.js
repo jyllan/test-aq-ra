@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-// import * as Adapter from 'enzyme-adapter-react-16';
+import { shallow, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import City from './City';
 
-import City from '../src/components/City';
 
 //Use array destructurig to create mock functions.
 let [onDisable, onRemove] = new Array(2).fill(jest.fn());
@@ -17,7 +17,8 @@ function shallowSetup() {
         onDisable: onDisable,
         onRemove: onRemove
     }
-    // shallow.configure({ adapter: new Adapter() });
+
+    configure({ adapter: new Adapter() });
 
     // wrapper instance around rendered output
     const enzymeWrapper = shallow(<City {...props} />);
