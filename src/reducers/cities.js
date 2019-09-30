@@ -13,6 +13,10 @@ const cities = (state = [], action) => {
         ]
       }
       return state
+    case 'REMOVE_CITY':
+        return state.filter(city =>
+          (city.id !== action.id)
+        );
     case 'TOGGLE_CITY':
       // Toggle the selected city's active attribute
       return state.map(city =>

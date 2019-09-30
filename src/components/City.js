@@ -17,7 +17,7 @@ class City extends React.Component {
 
     componentDidMount() {
         if (this.props.showDetails) {
-            fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=d772bba149811a24fc8a81b2a52d6b3e&lang=fr&id=${this.props.openweatherCityId}`)
+            fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=d772bba149811a24fc8a81b2a52d6b3e&lang=fr&units=metric&id=${this.props.openweatherCityId}`)
                 .then(res => res.json())
                 .then(
                     (result) => {
@@ -50,19 +50,28 @@ class City extends React.Component {
                         {
                             this.state.infos.weather &&
                             this.state.infos.weather.map((dayWeather, i) => {
-                                return (
-                                    <div key={i}>
-                                        <i className={`wi wi-owm-${dayWeather.id}`}></i>
-                                        {dayWeather.description}
-                                    </div>
-                                );
+                                // Display only the first weather info
+                                if (i === 0) {
+                                    return (
+                                        <div key={i}>
+                                            <i className={`wi wi-owm-${dayWeather.id}`}></i>
+                                            {dayWeather.description}
+                                        </div>
+                                    );
+                                }
+                                return false;
                             })
                         }
                         </Card.Body>
                     </Card>
                 );
             } else {
-                return <div>Erreur sur la ville d'ID : {this.props.openweatherCityId}</div>
+                return (
+                    <Card>
+                        <Card.Header>Ville : {this.props.openweatherCityId}</Card.Header>
+                        <Card.Body>ERREUR</Card.Body>
+                    </Card>
+                )
             }
         } else {
             return (
@@ -77,13 +86,24 @@ class City extends React.Component {
     settingView() {
         return (
             <li
-                onClick={this.props.onClick}
                 style={{
                     textDecoration: this.props.active ? 'line-through' : 'none'
                 }}
                 title={this.props.openweatherCityId}
             >
+                <span
+                    className="city__disable"
+                    onClick={this.props.onDisable}
+                >
+                    &#10004;
+                </span>
                 {this.props.openweatherCityId}
+                <span
+                    className="city__remove"
+                    onClick={this.props.onRemove}
+                >
+                    &#128465;
+                </span>
             </li>
         )
     }
@@ -95,10 +115,11 @@ class City extends React.Component {
 }
 
 City.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired,
-  showDetails: PropTypes.bool,
-  openweatherCityId: PropTypes.string.isRequired
+    onDisable: PropTypes.func.isRequired,
+    onRemove: PropTypes.func.isRequired,
+    active: PropTypes.bool.isRequired,
+    showDetails: PropTypes.bool,
+    openweatherCityId: PropTypes.string.isRequired
 }
 
 export default City

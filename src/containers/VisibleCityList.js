@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleTodo } from '../actions'
+import { toggleActive, removeCity } from '../actions'
 import CityList from '../components/CityList'
 import { VisibilityFilters } from '../actions'
 import PropTypes from 'prop-types'
@@ -31,7 +31,8 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    toggleTodo: id => dispatch(toggleTodo(id))
+    toggleActive: id => dispatch(toggleActive(id)),
+    removeCity: id => dispatch(removeCity(id)),
 })
 
 getVisibleCities.propTypes = {

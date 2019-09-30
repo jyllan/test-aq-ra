@@ -17,7 +17,10 @@ const AddCity = ({ dispatch }) => {
         dispatch(addCity(input.value))
         input.value = ''
       }}>
-        <input ref={node => input = node} />
+        <input
+            ref={node => input = node}
+            placeholder="OpenWeather City ID"
+        />
         <button type="submit">
           Add City
         </button>

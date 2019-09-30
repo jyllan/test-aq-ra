@@ -2,15 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import City from './City'
 
-const CityList = ({ cities, showDetails, toggleTodo }) => (
+const CityList = ({ cities, showDetails, toggleActive, removeCity }) => (
   <ul>
     {cities.map(city =>
       <City
         key={city.id}
         {...city}
         showDetails={showDetails}
-        onClick={() => toggleTodo(city.id)}
-      />
+        onDisable={() => toggleActive(city.id)}
+        onRemove={() => removeCity(city.id)}
+        />
     )}
   </ul>
 )
@@ -21,7 +22,8 @@ CityList.propTypes = {
     active: PropTypes.bool.isRequired,
     openweatherCityId: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  toggleTodo: PropTypes.func.isRequired,
+  toggleActive: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
   showDetails: PropTypes.bool
 }
 
