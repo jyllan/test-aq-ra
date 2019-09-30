@@ -47,21 +47,42 @@ class City extends React.Component {
                         {/* <Card.Header>{this.props.openweatherCityId}</Card.Header> */}
                         <Card.Header>{this.state.infos.name}</Card.Header>
                         <Card.Body>
-                        {
-                            this.state.infos.weather &&
-                            this.state.infos.weather.map((dayWeather, i) => {
-                                // Display only the first weather info
-                                if (i === 0) {
-                                    return (
-                                        <div key={i}>
-                                            <i className={`wi wi-owm-${dayWeather.id}`}></i>
-                                            {dayWeather.description}
-                                        </div>
-                                    );
+                            <div className="city__weather__type">
+                                {
+                                    this.state.infos.weather &&
+                                    this.state.infos.weather.map((dayWeather, i) => {
+                                        // Display only the first weather info
+                                        if (i === 0) {
+                                            return (
+                                                <div key={i}>
+                                                    <i className={`wi wi-owm-${dayWeather.id}`}></i>
+                                                    {dayWeather.description}
+                                                </div>
+                                            );
+                                        }
+                                        return false;
+                                    })
                                 }
-                                return false;
-                            })
-                        }
+                            </div>
+                            {
+                                (this.state.infos.main) &&
+                                (
+                                    <div className="city__weather__temperature">
+                                        <i className="wi wi-thermometer"></i>
+                                        {Math.round(this.state.infos.main.temp)}°C
+                                    </div>
+                                )
+                            }
+                            {
+                                (this.state.infos.wind) &&
+                                (
+                                    <div className="city__weather__wind">
+                                        <i className={`wi wi-wind towards-${this.state.infos.wind.deg}-deg`}></i>
+                                        {/* Convert m/s speed into km/h */}
+                                        {Math.round(this.state.infos.wind.speed * 3.6)} km/h
+                                    </div>
+                                )
+                            }
                         </Card.Body>
                     </Card>
                 );
