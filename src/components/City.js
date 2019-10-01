@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from "react-bootstrap/Card";
-import axios from "axios";
 import PropTypes from 'prop-types'
+import axios from 'axios'
 import '../style/weather/style.scss'
 
 
@@ -58,7 +58,6 @@ class City extends React.Component {
     fullView () {
         if (this.state.isLoaded) {
             if (this.state.infos.id) {
-                console.log(this.state.infos.name);
                 return (
                     <Card>
                         {/* <Card.Header>{this.props.openweatherCityId}</Card.Header> */}
@@ -116,7 +115,6 @@ class City extends React.Component {
                 )
             }
         } else {
-            console.log('City - 110 - ');
             return (
                 <Card>
                     <Card.Body>
@@ -173,4 +171,4 @@ City.propTypes = {
     openweatherCityId: PropTypes.string.isRequired,
 }
 
-export default City;
+export default City
