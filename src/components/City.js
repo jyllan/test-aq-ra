@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from "react-bootstrap/Card";
+import axios from "axios";
 import PropTypes from 'prop-types'
 import '../style/weather/style.scss'
 
@@ -15,37 +16,57 @@ class City extends React.Component {
         };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         if (this.props.showDetails) {
-            fetch(`http://api.openweathermap.org/data/2.5/weather?APPID=d772bba149811a24fc8a81b2a52d6b3e&lang=fr&units=metric&id=${this.props.openweatherCityId}`)
-                .then(res => res.json())
-                .then(
-                    (result) => {
-                          this.setState({
-                            isLoaded: true,
-                            infos: result,
-                          });
-                    },
-                    // Note: it's important to handle errors here
-                    // instead of a catch() block so that we don't swallow
-                    // exceptions from actual bugs in components.
-                    (error) => {
-                          this.setState({
-                            isLoaded: true,
-                            error,
-                          });
+            try {
+                // let result = await this.getData();
+                let result = await axios.get('http://api.openweathermap.org/data/2.5/weather', {
+                    params: {
+                        APPID: 'd772bba149811a24fc8a81b2a52d6b3e',
+                        units: 'metric',
+                        id: this.props.openweatherCityId,
+                        lang: 'fr',
                     }
-                )
+                });
+
+                if (result) {
+                    this.setState({
+                        isLoaded: true,
+                        infos: result.data,
+                    });
+                }
+            } catch (e) {
+                this.setState({
+                    isLoaded: true,
+                    error: e.message,
+                  });
+            }
         }
     }
+
+    // async getData() {
+    //     return await axios.get('http://api.openweathermap.org/data/2.5/weather', {
+    //         params: {
+    //             APPID: 'd772bba149811a24fc8a81b2a52d6b3e',
+    //             units: 'metric',
+    //             id: this.props.openweatherCityId,
+    //             lang: 'fr',
+    //         }
+    //     });
+    // }
 
     fullView () {
         if (this.state.isLoaded) {
             if (this.state.infos.id) {
+                console.log(this.state.infos.name);
                 return (
                     <Card>
                         {/* <Card.Header>{this.props.openweatherCityId}</Card.Header> */}
-                        <Card.Header>{this.state.infos.name}</Card.Header>
+                        <Card.Header>
+                            <div className="city__name">
+                                {this.state.infos.name}
+                            </div>
+                        </Card.Header>
                         <Card.Body>
                             <div className="city__weather__type">
                                 {
@@ -90,14 +111,19 @@ class City extends React.Component {
                 return (
                     <Card>
                         <Card.Header>Ville : {this.props.openweatherCityId}</Card.Header>
-                        <Card.Body>ERREUR</Card.Body>
+                        <Card.Body>ERREUR: {this.state.error}</Card.Body>
                     </Card>
                 )
             }
         } else {
+            console.log('City - 110 - ');
             return (
                 <Card>
-                    <Card.Body>Chargement...</Card.Body>
+                    <Card.Body>
+                        <div className="city__loading">
+                            Chargement...
+                        </div>
+                    </Card.Body>
                 </Card>
             )
         }
@@ -144,7 +170,7 @@ City.propTypes = {
     onRemove: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
     showDetails: PropTypes.bool,
-    openweatherCityId: PropTypes.string.isRequired
+    openweatherCityId: PropTypes.string.isRequired,
 }
 
-export default City
+export default City;
