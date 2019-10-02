@@ -98,7 +98,11 @@ class City extends React.Component {
                 return (
                     <Card>
                         <Card.Header>Ville : {this.props.openweatherCityId}</Card.Header>
-                        <Card.Body>ERREUR: {this.state.error}</Card.Body>
+                        <Card.Body>
+                            <div className="city__error">
+                                ERREUR: {this.state.error}
+                            </div>
+                        </Card.Body>
                     </Card>
                 )
             }
