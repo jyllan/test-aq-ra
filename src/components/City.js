@@ -1,7 +1,8 @@
 import React from 'react'
 import Card from "react-bootstrap/Card";
 import PropTypes from 'prop-types'
-import axios from 'axios'
+import getCityData from './getCityData';
+
 import '../style/weather/style.scss'
 
 
@@ -19,14 +20,8 @@ class City extends React.Component {
     async componentDidMount() {
         if (this.props.showDetails) {
             try {
-                // let result = await this.getData();
-                let result = await axios.get('http://api.openweathermap.org/data/2.5/weather', {
-                    params: {
-                        APPID: 'd772bba149811a24fc8a81b2a52d6b3e',
-                        units: 'metric',
-                        id: this.props.openweatherCityId,
-                        lang: 'fr',
-                    }
+                let result = await this.getData({
+                    openweatherCityId: this.props.openweatherCityId
                 });
 
                 if (result) {
@@ -44,16 +39,9 @@ class City extends React.Component {
         }
     }
 
-    // async getData() {
-    //     return await axios.get('http://api.openweathermap.org/data/2.5/weather', {
-    //         params: {
-    //             APPID: 'd772bba149811a24fc8a81b2a52d6b3e',
-    //             units: 'metric',
-    //             id: this.props.openweatherCityId,
-    //             lang: 'fr',
-    //         }
-    //     });
-    // }
+    async getData(params) {
+        return await getCityData(params);
+    }
 
     fullView () {
         if (this.state.isLoaded) {
