@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from "react-bootstrap/Card";
 import PropTypes from 'prop-types'
-import getCityData from './getCityData';
+import getCityData from '../getCityData';
 
 import '../style/weather/style.scss'
 
@@ -21,7 +21,7 @@ class City extends React.Component {
         if (this.props.showDetails) {
             try {
                 let result = await this.getData({
-                    openweatherCityId: this.props.openweatherCityId
+                    id: this.props.openweatherCityId
                 });
 
                 if (result) {
@@ -160,7 +160,7 @@ City.propTypes = {
     onRemove: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
     showDetails: PropTypes.bool,
-    openweatherCityId: PropTypes.string.isRequired,
+    openweatherCityId: PropTypes.number.isRequired,
 }
 
 export default City

@@ -14,7 +14,7 @@ const AddCity = ({ dispatch }) => {
           return
         }
         // On submit, call the addCity action
-        dispatch(addCity(input.value))
+        dispatch(addCity(parseInt(input.value, 10)));
         input.value = ''
       }}>
         <input
