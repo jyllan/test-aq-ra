@@ -124,10 +124,10 @@ class City extends React.Component {
                     <Card
                         className="city city--detail city--error"
                     >
-                        <Card.Header>Ville : {this.props.openweatherCityId}</Card.Header>
+                        <Card.Header>City : {this.props.openweatherCityId}</Card.Header>
                         <Card.Body>
                             <div className="city__error">
-                                ERREUR: {this.state.error}
+                                Error: {this.state.error}
                             </div>
                         </Card.Body>
                     </Card>
