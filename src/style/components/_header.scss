@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    justify-content: center;
+
+    &__nav {
+        display: flex;
+    }
+
+    &__nav-link {
+        position: relative;
+        padding: 1em;
+        text-transform: uppercase;
+
+        a {
+            color: #666666;
+        }
+
+        & + & {
+            &::before {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                height: 1rem;
+                content: "";
+                transform: translateY(-50%);
+                border-left: 1px solid #666666;
+            }
+        }
+    }
+}

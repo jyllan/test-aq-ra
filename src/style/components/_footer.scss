@@ -1,0 +1,14 @@
+.footer {
+    display: flex;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+
+    &__addcity {
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+
+    .filters {
+        margin: 0 auto;
+    }
+}

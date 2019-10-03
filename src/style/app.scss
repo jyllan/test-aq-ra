@@ -1,0 +1,17 @@
+.page {
+    width: 500px;
+}
+h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin: 2rem 0;
+}
+@import './components/cityList';
+@import './components/header';
+@import './components/footer';
+@import './components/home';
+@import './components/settings';
+@import './components/city';
+@import './containers/geolocCity';
+@import './containers/addCity';
+@import './weather/style';

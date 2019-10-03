@@ -1,0 +1,45 @@
+.city {
+    &--list {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &--detail {
+        & + & {
+            margin-top: 1rem;
+        }
+    }
+
+    &__weather {
+        display: grid;
+        padding: 0;
+
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+
+        &__type {
+            // grid-column:
+        }
+
+        &__temperature {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        &__info {
+            display: flex;
+            padding: 2rem 1rem;
+            flex-direction: column;
+            align-items: center;
+
+            &-icon {
+                font-size: 7rem;
+                opacity: 0.1;
+            }
+
+            &-text {
+                font-size: 2rem;
+            }
+        }
+    }
+}

@@ -1,20 +1,17 @@
 import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 function Header() {
     return (
         <header className="header">
-            <Navbar expand="lg">
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Link to="/">Home</Link>
-                        <Link to="/settings/">Settings</Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-
+            <nav className="header__nav">
+                <div className="header__nav-link">
+                    <Link to="/">Home</Link>
+                </div>
+                <div className="header__nav-link">
+                    <Link to="/settings/">Settings</Link>
+                </div>
+            </nav>
         </header>
     );
 }

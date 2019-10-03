@@ -43,10 +43,6 @@ class GeolocCity extends React.Component {
                         error: e.message,
                     });
                 }
-
-                //   this.setState({
-                //     latitude: position.coords.latitude,
-                //     longitude: position.coords.longitude,
                 //   })
             }, (error) => {
                 //   this.setState({ latitude: 'err-latitude', longitude: 'err-longitude' })
@@ -62,29 +58,19 @@ class GeolocCity extends React.Component {
     }
 
     render() {
-        const { name, coord } = this.state
-        console.log(this.state);
         return (
-            <div>
+            <div className="geolocCity">
             <form onSubmit={e => {
                 e.preventDefault()
                 this.getMyLocation();
             }}>
-            <button type="submit">
-            Geoloc me
+            <button
+                type="submit"
+                className="geolocCity__button"
+            >
+                Geolocate me <span className="ico">&#10148;</span>
             </button>
             </form>
-            {/* <div className="geolocCity__name">
-            {name}
-            </div>
-            <div className="geolocCity__coordinates">
-            <div className="geolocCity__coordinates__latitude">
-            {coord.lat}
-            </div>
-            <div className="geolocCity__coordinates__longitude">
-            {coord.lon}
-            </div>
-        </div> */}
         </div>
         )
     }

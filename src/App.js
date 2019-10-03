@@ -4,8 +4,9 @@ import Header from "./components/header";
 import { Home } from "./components/home";
 // import "./store";
 import { Settings } from "./components/settings";
-import './App.css';
+// import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './style/app.scss'
 
 function App() {
   return (

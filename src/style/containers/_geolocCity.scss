@@ -1,0 +1,12 @@
+.geolocCity {
+    &__button {
+        display: flex;
+        width: 180px;
+        justify-content: space-between;
+
+        span {
+            margin-top: 1px;
+            margin-left: 1rem;
+        }
+    }
+}

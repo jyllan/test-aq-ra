@@ -2,9 +2,7 @@ import React from 'react'
 import Card from "react-bootstrap/Card";
 import PropTypes from 'prop-types'
 import getCityData from '../getCityData';
-
-import '../style/weather/style.scss'
-
+import { ListGroup } from 'react-bootstrap';
 
 class City extends React.Component {
 
@@ -47,14 +45,18 @@ class City extends React.Component {
         if (this.state.isLoaded) {
             if (this.state.infos.id) {
                 return (
-                    <Card>
+                    <Card
+                        className="city city--detail"
+                    >
                         {/* <Card.Header>{this.props.openweatherCityId}</Card.Header> */}
                         <Card.Header>
                             <div className="city__name">
                                 {this.state.infos.name}
                             </div>
                         </Card.Header>
-                        <Card.Body>
+                        <Card.Body
+                            className="city__weather"
+                        >
                             <div className="city__weather__type">
                                 {
                                     this.state.infos.weather &&
@@ -62,9 +64,11 @@ class City extends React.Component {
                                         // Display only the first weather info
                                         if (i === 0) {
                                             return (
-                                                <div key={i}>
-                                                    <i className={`wi wi-owm-${dayWeather.id}`}></i>
-                                                    {dayWeather.description}
+                                                <div key={i} className="city__weather__info">
+                                                    <i className={`city__weather__info-icon wi wi-owm-${dayWeather.id}`}></i>
+                                                    <div className="city__weather__info-text">
+                                                        {dayWeather.description}
+                                                    </div>
                                                 </div>
                                             );
                                         }
@@ -76,8 +80,12 @@ class City extends React.Component {
                                 (this.state.infos.main) &&
                                 (
                                     <div className="city__weather__temperature">
-                                        <i className="wi wi-thermometer"></i>
-                                        {Math.round(this.state.infos.main.temp)}°C
+                                        <div className="city__weather__info">
+                                            <i className="city__weather__info-icon wi wi-celsius"></i>
+                                            <div className="city__weather__info-text">
+                                                {Math.round(this.state.infos.main.temp)}°C
+                                            </div>
+                                        </div>
                                     </div>
                                 )
                             }
@@ -85,9 +93,26 @@ class City extends React.Component {
                                 (this.state.infos.wind) &&
                                 (
                                     <div className="city__weather__wind">
-                                        <i className={`wi wi-wind towards-${this.state.infos.wind.deg}-deg`}></i>
-                                        {/* Convert m/s speed into km/h */}
-                                        {Math.round(this.state.infos.wind.speed * 3.6)} km/h
+                                        <div className="city__weather__info">
+                                            <i className={`city__weather__info-icon wi wi-wind towards-${this.state.infos.wind.deg}-deg`}></i>
+                                            <div className="city__weather__info-text">
+                                                {/* Convert m/s speed into km/h */}
+                                                {Math.round(this.state.infos.wind.speed * 3.6)} km/h
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            }
+                            {
+                                (this.state.infos.main.humidity) &&
+                                (
+                                    <div className="city__weather__humidity">
+                                        <div className="city__weather__info">
+                                            <i className="city__weather__info-icon wi wi-humidity"></i>
+                                            <div className="city__weather__info-text">
+                                                {this.state.infos.main.humidity}%
+                                            </div>
+                                        </div>
                                     </div>
                                 )
                             }
@@ -96,7 +121,9 @@ class City extends React.Component {
                 );
             } else {
                 return (
-                    <Card>
+                    <Card
+                        className="city city--detail city--error"
+                    >
                         <Card.Header>Ville : {this.props.openweatherCityId}</Card.Header>
                         <Card.Body>
                             <div className="city__error">
@@ -122,18 +149,11 @@ class City extends React.Component {
 
     settingView() {
         return (
-            <li
-                style={{
-                    textDecoration: this.props.active ? 'line-through' : 'none'
-                }}
-                title={this.props.openweatherCityId}
+            <ListGroup.Item as="li" active={this.props.active}
+                title={this.props.active? 'Hide on home' : 'Show on home'}
+                onClick={this.props.onDisable}
+                className="city city--list"
             >
-                <span
-                    className="city__disable"
-                    onClick={this.props.onDisable}
-                >
-                    &#10004;
-                </span>
                 <span
                     className="city__openweather-id"
                 >
@@ -141,11 +161,12 @@ class City extends React.Component {
                 </span>
                 <span
                     className="city__remove"
+                    title="Remove"
                     onClick={this.props.onRemove}
                 >
                     &#128465;
                 </span>
-            </li>
+            </ListGroup.Item>
         )
     }
 
