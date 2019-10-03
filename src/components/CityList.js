@@ -27,7 +27,8 @@ CityList.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     active: PropTypes.bool.isRequired,
-    openweatherCityId: PropTypes.number.isRequired
+    openweatherCityId: PropTypes.number.isRequired,
+    openweatherCityName: PropTypes.string.isRequired,
   }).isRequired).isRequired,
   toggleActive: PropTypes.func.isRequired,
   removeCity: PropTypes.func.isRequired,

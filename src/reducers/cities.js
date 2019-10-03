@@ -8,6 +8,7 @@ const cities = (state = [], action) => {
           {
             id: state.length? state[state.length - 1].id + 1 : 0, // Use the next ID available. IDs are unique and ascending
             openweatherCityId: action.openweatherCityId,
+            openweatherCityName: action.openweatherCityName,
             active: true
           }
         ]

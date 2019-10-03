@@ -124,7 +124,7 @@ class City extends React.Component {
                     <Card
                         className="city city--detail city--error"
                     >
-                        <Card.Header>City : {this.props.openweatherCityId}</Card.Header>
+                        <Card.Header>City : {this.props.openweatherCityName}</Card.Header>
                         <Card.Body>
                             <div className="city__error">
                                 Error: {this.state.error}
@@ -155,9 +155,14 @@ class City extends React.Component {
                 className="city city--list"
             >
                 <span
-                    className="city__openweather-id"
+                    className="city__name"
                 >
-                    {this.props.openweatherCityId}
+                    {this.props.openweatherCityName}
+                </span>
+                <span
+                    className="city__id"
+                >
+                    ({this.props.openweatherCityId})
                 </span>
                 <span
                     className="city__remove"
@@ -182,6 +187,7 @@ City.propTypes = {
     active: PropTypes.bool.isRequired,
     showDetails: PropTypes.bool,
     openweatherCityId: PropTypes.number.isRequired,
+    openweatherCityName: PropTypes.string.isRequired,
 }
 
 export default City

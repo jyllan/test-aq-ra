@@ -1,21 +1,22 @@
-export const addCity = openweatherCityId => ({
+export const addCity = (openweatherCityId, openweatherCityName) => ({
   type: 'ADD_CITY',
-  openweatherCityId
+  openweatherCityId,
+  openweatherCityName,
 }
 )
 export const removeCity = id => ({
   type: 'REMOVE_CITY',
-  id
+  id,
 })
 
 export const setVisibilityFilter = filter => ({
   type: 'SET_VISIBILITY_FILTER',
-  filter
+  filter,
 })
 
 export const toggleActive = id => ({
   type: 'TOGGLE_CITY',
-  id
+  id,
 })
 
 export const VisibilityFilters = {

@@ -1,13 +1,21 @@
 .city {
     &--list {
         display: flex;
-        justify-content: space-between;
     }
 
     &--detail {
         & + & {
             margin-top: 1rem;
         }
+    }
+
+    &__id {
+        margin-left: 1rem;
+        color: #cccccc;
+    }
+
+    &__remove {
+        margin-left: auto;
     }
 
     &__weather {

@@ -31,7 +31,7 @@ class GeolocCity extends React.Component {
                     });
                     // console.log('GeolocCity - 31 - result : ', result);
                     if (result) {
-                        this.dispatch(addCity(result.data.id));
+                        this.dispatch(addCity(result.data.id, result.data.name));
                         this.setState({
                             isLoaded: true,
                             infos: result.data,
