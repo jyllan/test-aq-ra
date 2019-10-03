@@ -9,8 +9,14 @@ import { VisibilityFilters } from '../actions'
 const Footer = () => (
     <div className="footer">
         <div className="footer__addcity">
-        <AddCity />
-        <GeolocCity />
+            <div className="footer__addcity__separator">
+                Add a city
+            </div>
+            <AddCity />
+            <div className="footer__addcity__separator">
+                or
+            </div>
+            <GeolocCity />
         </div>
         <div className="filters">
             <span>Filter: </span>

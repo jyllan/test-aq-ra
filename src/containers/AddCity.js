@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import getCityData from '../getCityData';
 import { addCity } from '../actions'
+import { Button, Form } from 'react-bootstrap';
 
 
 class AddCity extends React.Component {
@@ -47,7 +48,9 @@ class AddCity extends React.Component {
     render() {
         return (
             <div className="addCity">
-                <form
+
+                <Form
+                    className="addCity__form"
                     onSubmit={e => {
                         e.preventDefault()
                         if (!this.input.value.trim()) {
@@ -58,18 +61,18 @@ class AddCity extends React.Component {
                         // dispatch(addCity(parseIntthis.(input.value, 10)));
                         this.input.value = ''
                     }}>
-                    <input
+                    <Form.Control
+                        type="text"
                         className="addCity__input"
                         ref={node => this.input = node}
-                        placeholder="OpenWeather City ID"
-                    />
-                    <button
+                        placeholder="OpenWeather City ID" />
+                    <Button variant="primary"
                         type="submit"
                         className="addCity__button"
                     >
                         Add City
-                    </button>
-                </form>
+                    </Button>
+                </Form>
             </div>
         );
     }

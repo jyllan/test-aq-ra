@@ -1,5 +1,10 @@
 .addCity {
+    &__form {
+        display: flex;
+    }
+
     &__input {
         width: 180px;
+        margin-right: 5px;
     }
 }

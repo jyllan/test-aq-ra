@@ -6,6 +6,10 @@
     &__addcity {
         margin: 0 auto;
         margin-bottom: 2rem;
+
+        &__separator {
+            width: 180px;
+        }
     }
 
     .filters {

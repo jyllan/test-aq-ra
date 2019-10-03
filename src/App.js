@@ -14,9 +14,9 @@ function App() {
       <div className="page">
         <Header />
         <div className="content">
-          <Redirect exact from="/" to="/home/" />
           <Route path="/home/" exact component={Home} />
           <Route path="/settings/" component={Settings} />
+          <Redirect exact from="/" to="/home/" />
         </div>
       </div>
     </Router>

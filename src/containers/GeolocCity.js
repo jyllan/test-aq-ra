@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import getCityData from '../getCityData';
 import { addCity } from '../actions'
 // import {usePosition} from '../usePosition';
+import { Button, Form } from 'react-bootstrap';
 
 class GeolocCity extends React.Component {
     constructor(props) {
@@ -60,17 +61,19 @@ class GeolocCity extends React.Component {
     render() {
         return (
             <div className="geolocCity">
-            <form onSubmit={e => {
-                e.preventDefault()
-                this.getMyLocation();
-            }}>
-            <button
-                type="submit"
-                className="geolocCity__button"
-            >
-                Geolocate me <span className="ico">&#10148;</span>
-            </button>
-            </form>
+            <Form
+                className="geolocCity__form"
+                onSubmit={e => {
+                    e.preventDefault()
+                    this.getMyLocation();
+                }}>
+                <Button variant="primary"
+                    type="submit"
+                    className="geolocCity__button"
+                >
+                    Geolocate me <span className="ico">&#10148;</span>
+                </Button>
+            </Form>
         </div>
         )
     }
