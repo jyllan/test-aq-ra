@@ -4,5 +4,8 @@
     .list-group {
         width: 80%;
         margin: 0 auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

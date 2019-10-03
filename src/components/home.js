@@ -6,7 +6,6 @@ class Home extends React.Component {
     render() {
         return (
           <div className="home">
-            <h2>Home</h2>
             <VisibleCityList
                 visibilityFilter={VisibilityFilters.SHOW_ACTIVE}
                 showDetails={true}

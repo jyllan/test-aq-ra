@@ -1,5 +1,6 @@
 .header {
     display: flex;
+    margin-bottom: 4rem;
     justify-content: center;
 
     &__nav {
@@ -8,22 +9,43 @@
 
     &__nav-link {
         position: relative;
+        margin: 0 0.5rem;
         padding: 1em;
+        padding-bottom: 0.5em;
         text-transform: uppercase;
+        color: #666666;
 
-        a {
-            color: #666666;
+        &::after {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            content: "";
+            transition: transform 0.25s ease-in-out;
+            transform: translate(-50%, -50%);
+            transform: scale(0);
+            transform-origin: right center;
+            background: #666666;
         }
 
-        & + & {
-            &::before {
-                position: absolute;
-                top: 50%;
-                left: 0;
-                height: 1rem;
-                content: "";
-                transform: translateY(-50%);
-                border-left: 1px solid #666666;
+        &--active {
+            color: #777777;
+
+            &::after {
+                transform: scale(1);
+                transform-origin: left center;
+            }
+        }
+
+        &:hover {
+            text-decoration: none;
+            color: #777777;
+
+            &::after {
+                transform: scale(1);
+                transform-origin: left center;
             }
         }
     }
