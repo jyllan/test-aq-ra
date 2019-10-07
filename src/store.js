@@ -1,5 +1,6 @@
 import cityApp from './reducers';
 import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import throttle from 'lodash.throttle';
 
 const getStore = () => {
@@ -18,7 +19,11 @@ const getStore = () => {
         // no localstorage
     }
 
-    const store = createStore(cityApp, localStorageState);
+    const store = createStore(
+        cityApp,
+        localStorageState,
+        composeWithDevTools()
+    );
 
     store.subscribe(throttle(() => {
         saveState({
