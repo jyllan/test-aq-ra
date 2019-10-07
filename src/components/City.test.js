@@ -25,6 +25,7 @@ function shallowSetup(customProps = {}) {
     const defaultProps = {
         id: "0",
         openweatherCityId: 2992166, // Montpellier
+        openweatherCityName: 'Montpellier',
         active: true,
         showDetails: false,
         onDisable: onDisable,
@@ -53,8 +54,7 @@ describe('Shallow rendered listing City', () => {
           enzymeWrapper,
           props
         } = shallowSetup();
-
-        expect(parseInt(enzymeWrapper.find('.city__openweather-id').text(), 10)).toBe(props.openweatherCityId);
+        expect(enzymeWrapper.find('.city__id').text()).toContain(props.openweatherCityId);
     });
 
     it('should render a City with details. Check city name', async () => {
